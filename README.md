@@ -1,4 +1,3 @@
-# ai-rocket
 In this project we'll attempt to train a neural network to land a rocket in a simple physics simulation. We'll add complexity to the problem as we progress. You'll develop lots of new Python skills as we go on, especially object-oriented programming and using some new libraries. Please read through the below for an overview of the ideas. 
 
 # 0. Preliminaries
@@ -26,6 +25,4 @@ _There might be a warning about np.float types being deprecated, ignore this_.
 
 # 1. Q-Learning
 
-Any machine learning method can be reduced to an answer to the following question: 'given some inputs $X$, how do we maximize some other function $f(X)$?
-
-![rocket diagram](ai-rocket.png)
+Any machine learning method can be reduced to an answer to the following question: 'given some input __X__, how do we maximize some other function _f(___X___)_?
