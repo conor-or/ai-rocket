@@ -4,6 +4,8 @@ In this project we'll attempt to train a neural network to land a rocket [à la 
 
 #### You will need to install [TensorFlow](https://www.tensorflow.org/install/) and [Keras](https://keras.io/#installation) (in that order) before we start.
 
+#### When you've read the below have a look at the introduction notebook to get started.
+
 # 1. Some Rocket Science
 
 A rocket accelerates by expelling some material (often by a chemical reaction) in the direction opposite to the one it wants to travel in. The conservation of momentum then propels the rocket in the desired direction.
@@ -58,4 +60,5 @@ The code works according to the process in the diagram below. The diagram essent
 
 ![code diagram](ai-rocket.png)
 
+The parts in blue are the parts you'll code yourself. See the introductory notebook for details on this. The parts in orange are already done and won't need to be modified.
 
