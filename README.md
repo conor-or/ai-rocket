@@ -32,7 +32,7 @@ _This mode is more like an extension that we can attempt if we complete the abov
 
 # 2. Neural Networks
 
-A neural network (NN) is essentially just a very complicated function which takes many inputs and produces (usually) one or a small number of outputs. It's used to make predictions based on lots of input data where the functional form of the predictor itself is not clear. For example, classifying the objects in an image (input: 512x512 grid of pixel values, output: text label describing the object).
+Now a digression. A neural network (NN) is essentially just a very complicated function which takes many inputs and produces (usually) one or a small number of outputs. It's used to make predictions based on lots of input data where the functional form of the predictor itself is not clear. For example, classifying the objects in an image (input: 512x512 grid of pixel values, output: text label describing the object).
 
 ![NN](https://upload.wikimedia.org/wikipedia/commons/e/e4/Artificial_neural_network.svg)
 
@@ -42,4 +42,12 @@ The __weights__, _w_ tell the network exactly what output to give based on the i
 
 # 3. Q Learning
 
-The training process becomes more difficult when the outputs of the network do not produce an immediate feedback that it can train on.
+
+
+The training process becomes more difficult when the outputs of the network do not produce an immediate feedback that it can train on. This is exactly the case in our situation. At a given moment it might be a good idea for the AI to (for example) fire the main engine and slow down. But this action doesn't immediately achieve our final goal, safely landing. All it does it slow the rocket down temporarily. Slowing the rocket down temporarily is a _tactic_, the overall goal is the _strategy_. It's often trivial to train tactics but strategy is a much more difficult problem.
+
+This is where _Q-Learning_ comes in. First we add a new component to the problem, the __reward function__. This is simply some function which compares the state of the rocket before the AI made its decision to the state afterwards. If the state has improved, the AI receievs a reward and a penalty if its new situation is worse.
+
+Each decision the AI makes then leads to a new situation and a new set of decisions. At each step we want the AI to take the decision which maximises the future possible rewards, coming from all its future possible decisions. In this way the AI can strategise.
+
+Each decision has a 'quality' or a Q-score, a number which represents the possible future rewards from making that decision.  Q can be thought of as a function of the current state of the rocket which returns a score for each possible decision. We want the AI to take the decision with the highest Q. By recording the state of the rocket at each timestep, the decisions the AI takes, and the reward it receives afterwards, the AI can effectively __learn the Q function__. Specifically, our neural network will be a model for Q. The AI will input the current state of the rocket into the network and receive the predicted future scores for each decision. We then take the decision with the highest score. In the next timestep we see what score we really received. Over time the AI's predictions improve and eventually the neural network comes to approximate the true form of Q.
