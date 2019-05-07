@@ -1,12 +1,26 @@
 In this project we'll attempt to train a neural network to land a rocket [à la SpaceX](https://www.youtube.com/watch?v=u0-pfzKbh2k) in a simple physics simulation. We'll add complexity to the problem as we progress. Please read through the below for an overview of the ideas. 
 
-#### Download the materials with [this link](https://github.com/conor-or/ai-snake/archive/master.zip)
+#### Download the materials with [this link](https://github.com/conor-or/ai-rocket/archive/master.zip)
 
 #### You will need to install [TensorFlow](https://www.tensorflow.org/install/) and [Keras](https://keras.io/#installation) (in that order) before we start.
 
 # 1. Some Rocket Science
 
-A rocket moves around simply 
+A rocket accelerates by expelling some material (often by a chemical reaction) in the direction opposite to the one it wants to travel in. The conservation of momentum then propels the rocket in the desired direction.
+
+Our simulation will involve a small rocket attempting to land on a platform in the ocean. If the rocket hits the ocean or the sides of the simulation it crashes. If it hits the platform at a suitably small velocity it lands successfully. The rocket starts in a random position high above the platform. At each timestep, the AI can decide whether to fire the thrusters or not (and in which direction) with the goal of achieving a safe landing is made. The simulation can operate in one of three modes:
+
+* Mode 0: The rocket __only moves vertically__. It begins at some random height directly above the platform with some random vertical velocity. It can fire a single thruster on the bottom of the rocket to decelerate. It must reach the platform with a vertical velocity below a certain threshold to achieve a safe landing
+
+__This mode will serve as our introduction and a successful AI can be trained on this in 20-30 mins.__
+
+* Mode 1: We now add __horizontal motion__ to the above. The rocket now begins in a completely random (x, y) point somewhere high up above the platform and has a random velocity (both horizontal and vertical). In addition to the main thruster on the bottom the AI now also has smaller thrusters on both sides of the rocket that move it left and right. The rocket must land on the platform below a certain total velocity threshold to achieve a safe landing.
+
+__This is where I envision us spending most of the project and training on this mode can take a few hours__
+
+* Mode 2: In this mode the L/R thrusters don't move the rocket left and right but rotate the rocket about its centre of mass. This is much more like how the thrusters on a real rocket would be arranged. The correct movement can then only be achieved by first pointing the rocket in the right direction and then firing the main thruster. A successful landing requires both a low total velocity as above but also that the rocket be upright and have a low angular velocity.
+
+__This mode is more like an extension that we can attempt if we complete the above__
 
 # 2. Neural Networks
 
