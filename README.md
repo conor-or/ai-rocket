@@ -24,10 +24,8 @@ If those lines run without any issues the installation was successful.
 
 _There might be a warning about np.float types being deprecated, ignore this_.
 
-# 1. Some rocket science
+# 1. Q-Learning
 
-A rocket moves forwards 
-
-# 2. Method
+Any machine learning method can be reduced to an answer to the following question: 'given some inputs $X$, how do we maximize some other function $f(X)$?
 
 ![rocket diagram](ai-rocket.png)
