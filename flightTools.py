@@ -280,7 +280,7 @@ class Flight:
         vertical_dx = self.simulation_resolution * self.velocity[-1][1]
         
         # Check if rocket has landed safely
-        if ((self.position[-1][1] - (self.b_h[-1] / 2) <= 0.0 and
+        if (((self.position[-1][1] - (self.b_h[-1] / 2) + vertical_dx) <= 0.0 and
             np.abs(self.position[-1][0]) <= self.base_size and
             norm(self.velocity[-1]) <= self.rocket.impact_velocity and
             norm(self.angular_v[-1]) <= 0.2) and
